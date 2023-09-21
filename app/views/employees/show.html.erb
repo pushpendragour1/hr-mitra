@@ -1,0 +1,56 @@
+<div class="col-lg-12"> 
+<div class="card rounded-0 mt-5 mb-5"  > 
+  <div class="card-body" >
+    <h5 class= "text-center">  Employee Details :</h5>
+    <div class="row mt-5"  >
+     <div class="col-lg-6" >
+     <h5>  Personal Information :</h5>
+     <p class="lead mt-3"> <strong> First name : </strong> <%= @employee.first_name%>  <%= @employee.middle_name.present? ? @employee.middle_name : ""%>  <%= @employee.last_name%> </p>
+     <p class="lead mt-3"> <strong> Emails : </strong> <%= @employee.personal_emails%> </p>
+     <p class="lead mt-3"> <strong> Address : </strong> <%= @employee.address_line1%> </p>
+     <p class="lead mt-3"> <strong> State : </strong> <%= @employee.state%> <%= @employee.city%></p>
+     <p class="lead mt-3"> <strong> Country name : </strong> <%= @employee.country%> </p>
+      <div class="dropdown text-center">
+  <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Action 
+  </button>
+  <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+    <li> <%= link_to "edit Employee details", edit_employee_path, class: "btn btn-primary btn-lg mb-4  rounded-0" %></li>
+    <li>  <%= link_to "Create new Employee ", new_employee_path, class: "btn btn-primary btn-lg mb-4  rounded-0" %></li>
+    <li> <%= link_to "delete Employee ", employee_path, class: "btn btn-primary btn-lg mb-4  rounded-0", method: :delete, data: { confirm: 'Are you sure to delete this employee?'}%></li>
+    <% if @employee.documents.present? %>
+    <li> <%= link_to "Edit Document ", edit_document_path(@employee.documents.ids), class: "btn btn-primary btn-lg mb-4  rounded-0" %></li>
+     <li> <%= link_to "Delete Document ",  document_path(@employee.documents.ids),  method: :delete, data: { confirm: 'Are you sure to delete this Document?'}, class: "btn btn-primary btn-lg mb-4  rounded-0" %></li>
+    <% end %>
+  </ul>
+    </div>
+      </div>  
+
+     <div class="row mt-5 mb-5"  >
+      <% if @employee.documents.present? %>
+       <h5 class= "text-center">  Employee Documents :</h5>
+        <% @employee.documents.each do |document| %>
+       <div class= "card" >
+       <div class ="card-body mb-4">
+        <div class= "row">
+        <% if document.image.attached? %>
+        <div class="col-lg-4">
+            <%= image_tag document.image %>
+             <div class="col-lg-4 mb-4 mt-4">
+        <p class= "row"> <%= document.name %> </p>
+        </div>
+        </div>
+        <% end %>
+      </div>
+      </div>
+      <% end %>
+     <% end %>
+     <div class="row mt-5"  >
+     <div class="col-lg-6" >
+    <%= link_to 'back to Employee', employees_path, class:"btn btn-primary"%> 
+    <%= link_to 'edit Employee', edit_employee_path(@employee), class:"btn btn-primary"%>
+    </div>
+    </div>
+        </div>
+</div>
+</div>  

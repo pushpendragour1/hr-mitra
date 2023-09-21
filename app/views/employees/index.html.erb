@@ -1,0 +1,90 @@
+<div class="col-lg-12">
+  <%= flash[:notice] %>
+<div class="card rounded-0 mt-5 mb-5"  > 
+  <div class="card-body" >
+    <h5 class= "text-center">  All Employees  Details :</h5>
+    
+  </div>
+</div>
+  <%= link_to "Add new Employee", new_employee_path, class: "btn btn-primary btn-lg mb-4  rounded-0" %>
+  <%= link_to "Add Employee new Documents ", new_document_path, class: "btn btn-primary btn-lg mb-4  rounded-0" %>
+
+ <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      View List In
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li> <%= link_to "Table", employees_path(view_type: 'table'), class: "dropdown-item" %></li>
+              <li> <%= link_to "Accordian", employees_path(view_type: 'accordian'), class: "dropdown-item" %></li>
+              </ul>
+            </div>
+    <% if params[:view_type].present? && params[:view_type] == 'table' %>
+        <table class = "table table-bordered">
+        <thead>
+          <tr> 
+          <th> Name</th>
+          <th> Email</th>
+          <th> Address</th>
+          <th> Actions</th>
+          </tr>
+
+          </thead>
+
+          <tbody>
+            
+            <script>
+            console.log(1)
+            </script>
+
+          <% @employees.each do |employee| %>
+            <tr> 
+            <th><%= employee.name %> </th>
+            <th><%= employee.email%> </th> 
+            <th><%= employee.full_address%> </th>
+            <th>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li> <%= link_to "Edit", edit_employee_path(employee), class: "dropdown-item" %></li>
+              <li> <%= link_to "view", employee_path(employee), class: "dropdown-item" %></li>
+              <li> <%= link_to "delete", employee_path(employee), class: "dropdown-item", method: :delete, data: { confirm: 'Are you sure to delete this employee?'}%></li>
+              </ul>
+            </div>
+            <th>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+   <% end %>
+  <% if params[:view_type].present? && params[:view_type] == 'accordian' %>
+   <div class="accordion" id="accordionExample">
+    <% @employees.each do |employee| %>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading<%= employee.id%>">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= employee.id%>" aria-expanded="true" aria-controls="collapse<%= employee.id%>">
+          <%= employee.name_with_email %>
+          </button>
+        </h2>
+        <div id="collapse<%= employee.id%>" class="accordion-collapse collapse " aria-labelledby="heading<%= employee.id%>" data-bs-parent="#accordionExample">
+          <div class="accordion-body"> 
+            <h5 class= "text-center">  Employee Details :</h5>
+            <div class="row mt-5"  >
+            <div class="col-lg-6" >
+            <h5>  Personal Information :</h5>
+            <p class="lead mt-3"> <strong> First name : </strong> <%= employee.first_name%>  <%= employee.middle_name.present? ? employee.middle_name : ""%>  <%= employee.last_name%> </p>
+            <p class="lead mt-3"> <strong> Emails : </strong> <%= employee.personal_emails%> </p>
+            <p class="lead mt-3"> <strong> Address : </strong> <%= employee.address_line1%> </p>
+            <p class="lead mt-3"> <strong> State : </strong> <%= employee.state%> <%= employee.city%></p>
+            <p class="lead mt-3"> <strong> Country name : </strong> <%= employee.country%> </p>
+          </div>
+          </div> 
+          <%= link_to "edit Employee details", edit_employee_path(employee), class: "btn btn-primary btn-lg mb-4  rounded-0" %>
+          <%= link_to "delete Employee ", employee_path(employee), class: "btn btn-primary btn-lg mb-4  rounded-0", method: :delete, data: { confirm: 'Are you sure to delete this employee?'}%>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

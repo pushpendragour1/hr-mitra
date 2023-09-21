@@ -1,3 +1,12 @@
-<h1><%= @title %></h1>
-<h2><%= @subTitle %></h2>
-<%= render 'shared/links' %>
+<div class="container col-lg-10 mx-auto"> "> 
+ <div class="row">
+<div class="card">
+<h5 class="card-header">Welcome</h5>
+  <div class="card-body">
+  <%= link_to "Add new Employee ", new_employee_path, class: "btn btn-primary btn-lg mb-4  rounded-0" %>
+  </div>
+</div>
+
+</div>
+<%= render 'shared/footer'%>
+</div>

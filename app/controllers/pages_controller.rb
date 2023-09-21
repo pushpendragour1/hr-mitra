@@ -8,6 +8,6 @@ class PagesController < ApplicationController
   def privcy_policy
   end
 
-  def terms_and_controller
+  def terms_and_condition
   end
 end

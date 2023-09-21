@@ -1,0 +1,160 @@
+
+
+<%= form_with model: employee do |form| %>
+<div class="card">
+  <h5 class="card-header">Form Tag</h5>
+  <div class="card-body">
+<div class="row" >
+ <div class ="col-lg-4" >
+   <div class="form-group" >
+    <%=form.label :first_name, class: 'mb-2' %>
+    <%=form.text_field :first_name, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:first_name).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+ <div class="col-lg-4" >
+   <div class="form-group" >
+    <%=form.label :middle_name, class: 'mb-2' %>
+    <%=form.text_field :middle_name, class: 'form_controler form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:middle_name).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+ <div class="col-lg-3" >
+   <div class="form-group" >
+     <%=form.label :last_name, class: 'mb-2' %>
+    <%=form.text_field :last_name, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:last_name).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+
+<!--<div class="row mt-4 mb-3"  >
+
+  <div class="col-lg-4 " >
+   <div class="form-group" >
+     <%=form.label :date_of_birth, class: 'mb-2' %>
+    <%=form.date_field :date_of_birth, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:date_of_birth).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+<div class="col-lg-4" >
+   <div class="form-group" >
+     <%=form.label :date_of_joining, class: 'mb-2' %>
+    <%=form.date_field :date_of_joining, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:date_of_joining).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+ <div class="col-lg-4" >
+   <div class="form-group" >
+     <%=form.label :job_title, class: 'mb-4' %>
+    <%=form.text_field :job_title, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:job_title).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+-->
+
+  <div class="col-lg-4" >
+   <div class="form-group" >
+    <%=form.label :personal_emails, class: 'mb-4' %>
+    <%=form.email_field :personal_emails, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:personal_emails).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+ </div>
+
+
+ 
+<div class="row mt-4 mb-4">
+ <div class="col-lg-4" >
+   <div class="form-group" >
+    <%=form.label :address_line1, class:'mb-2' %>
+    <%=form.text_field :address_line1, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:address_line1).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+
+<div class="col-lg-4" >
+   <div class="form-group" >
+    <%=form.label :address_line2, class: 'mb-2' %>
+    <%=form.text_field :address_line2, class: 'form_control form-control-lg rounded-0' %>
+    <% @employee.errors.full_messages_for(:address_line2).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+
+ <div class="col-lg-4" >
+   <div class="form-control ">
+    <%=form.label :city, class: "mb-3" %>
+    <%=form.text_field :city, class: 'form_control form-control-lg rounded-0'%>
+    <% @employee.errors.full_messages_for(:city).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+ </div>
+
+<div class="row mt-4 mb-4">
+<div class="col-lg-4" >
+   <div class="form-control " >
+    <%=form.label :state, class: "mb-2" %>
+    <%=form.text_field :state, class: 'form_control form-control-lg rounded-0'%>
+    <% @employee.errors.full_messages_for(:state).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+<div class="col-lg-4" >
+   <div class="form-control " >
+    <%=form.label :country, class: "mb-2" %>
+    <%=form.text_field :country, class: 'form_control form-control-lg rounded-0'%>
+    <% @employee.errors.full_messages_for(:first_name).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+<div class="col-lg-3" >
+   <div class="form-control" >
+    <%=form.label :pincode, class: "mb-2" %>
+    <%=form.text_field :pincode, class: 'form_control form-control-lg rounded-0'%>
+    <% @employee.errors.full_messages_for(:pincode).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+ <div class="col-lg-12" >
+   <div class="form-group" >
+     <%=form.label :bio, class: 'mb-4' %>
+    <%=form.text_area :bio, class: 'form_control form-control-lg rounded-0', row: "5" %>
+    <% @employee.errors.full_messages_for(:bio).each do |message| %>
+      <p class="text-danger"> <%= message %> </p>
+    <% end %>
+  </div>
+ </div>
+ </div>
+ <div class="row">
+   <div class="col-lg-4" >
+    <%=form.submit class: 'btn btn-outline-primary btn-lg rounded-0'%>
+    <%= link_to "back to Employees", employees_path, class: 'btn btn-outline-primary btn-lg rounded-0'  %>
+  </div>
+ </div>
+ </div>
+
+<% end %>
+ </div>
+ </div>
